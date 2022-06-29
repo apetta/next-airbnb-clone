@@ -1,5 +1,6 @@
 import Image from "next/image";
 import logo from "../public/airbnb-logo.png";
+
 import {
   GlobeAltIcon,
   MenuIcon,
