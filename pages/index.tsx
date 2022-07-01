@@ -25,7 +25,7 @@ const Home = ({ exploreData, liveAnywhereData }: ApiRes) => {
         <section className="pt-6">
           <h2 className="pb-5 text-4xl font-semibold">Explore Nearby</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {exploreData?.map((item, _: number) => (
+            {exploreData?.map((item, _) => (
               <SmallCard
                 key={_}
                 location={item.location}

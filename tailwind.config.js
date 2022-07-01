@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "airbnb-pink": "#FF5A5F",
+        "airbnb-pink": "#FD5B61",
       },
     },
   },

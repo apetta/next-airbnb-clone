@@ -9,3 +9,15 @@ type CardData = {
   distance?: string;
   title?: string;
 };
+
+type SearchResults = {
+  img: string;
+  location: string;
+  lat: number;
+  long: number;
+  title: string;
+  description: string;
+  star: string;
+  price: string;
+  total: string;
+};
