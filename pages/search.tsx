@@ -53,9 +53,9 @@ function Search({ searchResults }: { searchResults: SearchResults[] }) {
           ))}
         </section>
 
-        <section className="sticky top-0 hidden h-screen xl:inline xl:min-w-[600px]">
+        {/* <section className="sticky top-0 hidden h-screen xl:inline xl:min-w-[600px]">
           <Map searchResults={searchResults} />
-        </section>
+        </section> */}
       </main>
       <Footer />
     </div>
