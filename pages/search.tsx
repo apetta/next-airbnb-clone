@@ -47,10 +47,11 @@ function Search({ searchResults }: { searchResults: SearchResults[] }) {
             <p className="button">Rooms and Beds</p>
             <p className="button">More Filters</p>
           </div>
-
-          {searchResults?.map((result, _) => (
-            <InfoCard key={_} {...result} />
-          ))}
+          <div>
+            {searchResults?.map((result, _) => (
+              <InfoCard key={_} {...result} />
+            ))}
+          </div>
         </section>
 
         <section className="sticky top-0 hidden h-screen xl:inline xl:min-w-[600px]">
