@@ -4,22 +4,22 @@ import ProgressBar from "@badrap/bar-of-progress";
 import Router from "next/router";
 
 const progress = new ProgressBar({
-  size: 4,
+  size: 2,
   color: "#DE595E",
   className: "z-50",
   delay: 50,
 });
 
 Router.events.on("routeChangeStart", () => {
-  progress.start;
+  progress.start();
 });
 
 Router.events.on("routeChangeComplete", () => {
-  progress.finish;
+  progress.finish();
 });
 
 Router.events.on("routeChangeError", () => {
-  progress.finish;
+  progress.finish();
 });
 
 function MyApp({ Component, pageProps }: AppProps) {

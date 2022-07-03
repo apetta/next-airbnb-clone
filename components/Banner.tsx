@@ -1,8 +1,10 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import heroImage from "../public/airbnb-hero.png";
 import icon from "../public/airbnb-icon.png";
 
 function Banner() {
+  const router = useRouter();
   return (
     <div className="relative h-[300px] sm:h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px]">
       <Image
@@ -23,7 +25,14 @@ function Banner() {
         <p className="text-md font-bold text-airbnb-pink sm:text-lg">
           Need Inspiration?
         </p>
-        <button className="my-3 rounded-full bg-airbnb-pink px-10 py-3 font-bold text-white shadow-md transition-transform duration-200 ease-in-out hover:shadow-xl active:scale-90">
+        <button
+          onClick={() =>
+            router.push(
+              "/search?location=London&startDate=2042-01-01T00%3A00%3A00.000Z&endDate=2042-01-14T00%3A00%3A00.000Z&guestNumber=2"
+            )
+          }
+          className="my-3 rounded-full bg-airbnb-pink px-10 py-3 font-bold text-white shadow-md transition-transform duration-200 ease-in-out hover:shadow-xl active:scale-90"
+        >
           Surprise Me
         </button>
       </div>

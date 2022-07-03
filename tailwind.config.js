@@ -9,6 +9,9 @@ module.exports = {
       colors: {
         "airbnb-pink": "#FD5B61",
       },
+      animation: {
+        "bounce-slow": "bounce 3s infinite ",
+      },
     },
   },
   plugins: [require("tailwind-scrollbar-hide")],
