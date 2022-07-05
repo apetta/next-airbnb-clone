@@ -2,11 +2,16 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import heroImage from "../public/airbnb-hero.png";
 import icon from "../public/airbnb-icon.png";
+import { motion } from "framer-motion";
+import { fadeInUp } from "../utils/framerAnimations";
 
 function Banner() {
   const router = useRouter();
   return (
-    <div className="relative h-[300px] sm:h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px]">
+    <motion.div
+      variants={fadeInUp}
+      className="relative h-[300px] sm:h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px]"
+    >
       <Image
         priority
         src={heroImage}
@@ -14,7 +19,8 @@ function Banner() {
         objectFit="cover"
         alt="hero"
       />
-      <div className="absolute top-1/3 left-1/2 min-w-fit -translate-y-1/4 -translate-x-1/2 rounded-lg bg-white p-5 px-10 text-center  sm:top-1/3 lg:-translate-y-0 lg:px-20">
+
+      <div className="absolute top-1/3 left-1/2 min-w-fit -translate-y-1/4 -translate-x-1/2 rounded-lg bg-white p-5 px-10 text-center sm:top-1/3 lg:-translate-y-0 lg:px-20">
         <Image
           src={icon}
           objectFit="contain"
@@ -36,6 +42,7 @@ function Banner() {
           Surprise Me
         </button>
       </div>
+
       <div className="absolute right-1 bottom-1">
         <p className="text-[10px]">
           Image by{" "}
@@ -49,7 +56,7 @@ function Banner() {
           </a>
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 }
 export default Banner;

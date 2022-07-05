@@ -1,8 +1,13 @@
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { fadeInUp } from "../utils/framerAnimations";
 
 function LargeCard() {
   return (
-    <section className="relative cursor-pointer py-16">
+    <motion.section
+      variants={fadeInUp}
+      className="relative cursor-pointer py-16"
+    >
       <div className="relative h-96 min-w-[300px]">
         <Image
           src="https://links.papareact.com/4cj"
@@ -21,7 +26,7 @@ function LargeCard() {
           Get Inspired
         </button>
       </div>
-    </section>
+    </motion.section>
   );
 }
 export default LargeCard;

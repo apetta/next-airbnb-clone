@@ -1,6 +1,8 @@
 import { HeartIcon } from "@heroicons/react/outline";
 import { StarIcon } from "@heroicons/react/solid";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { fadeInLeft, fadeInUp } from "../utils/framerAnimations";
 
 function InfoCard({
   img,
@@ -12,7 +14,10 @@ function InfoCard({
   total,
 }: SearchResults) {
   return (
-    <div className="flex cursor-pointer border-b py-7 px-2 pr-4 transition duration-200 ease-out first:border-t hover:opacity-90 hover:shadow-lg">
+    <motion.div
+      variants={fadeInLeft}
+      className="flex cursor-pointer border-b py-7 px-2 pr-4 transition duration-200 ease-out first:border-t hover:opacity-90 hover:shadow-lg"
+    >
       <div className="relative h-24 w-40 shrink-0 md:h-52 md:w-80">
         <Image
           src={img}
@@ -44,7 +49,7 @@ function InfoCard({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 export default InfoCard;

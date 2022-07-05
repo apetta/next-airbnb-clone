@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import ProgressBar from "@badrap/bar-of-progress";
 import Router from "next/router";
+import { AnimatePresence } from "framer-motion";
 
 const progress = new ProgressBar({
   size: 2,
@@ -23,7 +24,11 @@ Router.events.on("routeChangeError", () => {
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <AnimatePresence exitBeforeEnter>
+      <Component {...pageProps} />
+    </AnimatePresence>
+  );
 }
 
 export default MyApp;

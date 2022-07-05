@@ -3,6 +3,7 @@ import logo from "../public/airbnb-logo.png";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker, RangeKeyDict } from "react-date-range";
+import { motion, AnimatePresence } from "framer-motion";
 
 import {
   GlobeAltIcon,
@@ -11,9 +12,10 @@ import {
   UserCircleIcon,
   UsersIcon,
 } from "@heroicons/react/solid";
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { animLabels, fadeIn } from "../utils/framerAnimations";
 
 function Header({ placeholder }: { placeholder?: string }) {
   const [searchInput, setSearchInput] = useState("");
@@ -85,38 +87,43 @@ function Header({ placeholder }: { placeholder?: string }) {
           <UserCircleIcon className="h-8" />
         </div>
       </div>
-
-      {searchInput && (
-        <div className="col-span-3 mx-auto mt-5 flex flex-col">
-          <DateRangePicker
-            ranges={[selectionRange]}
-            minDate={startDate}
-            rangeColors={["#FD5B61"]}
-            onChange={handleSelect}
-          />
-          <div className="mb-4 mt-2 flex items-center border-b">
-            <h2 className="flex-grow text-2xl font-semibold">
-              Number of Guests
-            </h2>
-            <UsersIcon className="h-5" />
-            <input
-              min={1}
-              value={guestNumber}
-              type="number"
-              className="w-12 pl-2 text-center text-lg text-airbnb-pink outline-none"
-              onChange={(e) => setGuestNumber(Number(e.target.value))}
+      <AnimatePresence>
+        {searchInput && (
+          <motion.div
+            {...animLabels}
+            variants={fadeIn}
+            className="col-span-3 mx-auto mt-5 flex flex-col"
+          >
+            <DateRangePicker
+              ranges={[selectionRange]}
+              minDate={startDate}
+              rangeColors={["#FD5B61"]}
+              onChange={handleSelect}
             />
-          </div>
-          <div className="flex justify-around">
-            <button onClick={resetInput} className="text-gray-600">
-              Cancel
-            </button>
-            <button onClick={search} className="text-airbnb-pink">
-              Search
-            </button>
-          </div>
-        </div>
-      )}
+            <div className="mb-4 mt-2 flex items-center border-b">
+              <h2 className="flex-grow text-2xl font-semibold">
+                Number of Guests
+              </h2>
+              <UsersIcon className="h-5" />
+              <input
+                min={1}
+                value={guestNumber}
+                type="number"
+                className="w-12 pl-2 text-center text-lg text-airbnb-pink outline-none"
+                onChange={(e) => setGuestNumber(Number(e.target.value))}
+              />
+            </div>
+            <div className="flex justify-around">
+              <button onClick={resetInput} className="text-gray-600">
+                Cancel
+              </button>
+              <button onClick={search} className="text-airbnb-pink">
+                Search
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
