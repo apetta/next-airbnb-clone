@@ -6,10 +6,9 @@ import InfoCard from "../components/InfoCard";
 import Map from "../components/Map";
 import { motion } from "framer-motion";
 import {
-  animLabels,
+  defaultLabels,
   fadeIn,
   fadeInLeft,
-  fadeInRight,
   fadeInUp,
   pageTransition,
   stagger,
@@ -37,19 +36,26 @@ function Search({ searchResults }: { searchResults: SearchResults[] }) {
   const dateRange = `${formattedStartDate} - ${formattedEndDate}`;
 
   return (
-    <motion.div {...animLabels} variants={pageTransition}>
+    <motion.div {...defaultLabels}>
       <Header
-        placeholder={`${location} | ${dateRange} | ${guestNumber} Guest`}
+        placeholder={
+          location && dateRange && guestNumber
+            ? `${location} | ${dateRange} | ${guestNumber} ${
+                guestNumber && guestNumber > "1" ? "Guests" : "Guest"
+              }`
+            : null
+        }
       />
 
-      <main className="flex">
+      <motion.main variants={pageTransition} className="flex">
         <section className="grow px-6 pt-5">
           <motion.div variants={fadeInLeft}>
             <p className="text-xs">
-              300+ Stays - {dateRange} for {guestNumber} Guests
+              300+ Stays - {dateRange} for {guestNumber}{" "}
+              {guestNumber && guestNumber > "1" ? "Guests" : "Guest"}
             </p>
             <h1 className="mt-2 mb-6 text-3xl font-semibold">
-              Stays in London
+              Stays in {location}
             </h1>
             <motion.div
               variants={stagger}
@@ -85,7 +91,7 @@ function Search({ searchResults }: { searchResults: SearchResults[] }) {
         >
           <Map searchResults={searchResults} />
         </motion.section>
-      </main>
+      </motion.main>
       <Footer />
     </motion.div>
   );

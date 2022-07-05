@@ -12,12 +12,13 @@ import {
   fadeInUp,
   stagger,
   pageTransition,
-  animLabels,
+  defaultLabels,
+  lazyOnceLabels,
 } from "../utils/framerAnimations";
 
 const Home = ({ exploreData, liveAnywhereData }: ApiRes) => {
   return (
-    <motion.div {...animLabels} variants={pageTransition} className="">
+    <motion.div {...defaultLabels} className="">
       <Head>
         <title>Airbnb Clone</title>
         <link rel="icon" href="/airbnb-icon.png" />
@@ -28,7 +29,10 @@ const Home = ({ exploreData, liveAnywhereData }: ApiRes) => {
       {/* Banner */}
       <Banner />
       {/* Main */}
-      <main className="mx-auto max-w-7xl px-8 sm:px-16">
+      <motion.main
+        variants={pageTransition}
+        className="mx-auto max-w-7xl px-8 sm:px-16"
+      >
         <section className="pt-6">
           <motion.h2
             variants={fadeInUp}
@@ -51,7 +55,7 @@ const Home = ({ exploreData, liveAnywhereData }: ApiRes) => {
           </motion.div>
         </section>
 
-        <section className="py-5">
+        <motion.section {...lazyOnceLabels} className="py-5">
           <motion.h2
             variants={fadeInUp}
             className="py-8 text-4xl font-semibold"
@@ -67,10 +71,10 @@ const Home = ({ exploreData, liveAnywhereData }: ApiRes) => {
               <MediumCard key={_} img={item.img} title={item.title} />
             ))}
           </motion.div>
-        </section>
+        </motion.section>
 
         <LargeCard />
-      </main>
+      </motion.main>
       <Footer />
     </motion.div>
   );

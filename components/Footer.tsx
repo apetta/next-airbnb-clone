@@ -1,6 +1,13 @@
+import { fadeInUp, lazyOnceLabels } from "../utils/framerAnimations";
+import { motion } from "framer-motion";
+
 function Footer() {
   return (
-    <div className="grid grid-cols-2 gap-y-10 gap-x-10 bg-gray-100 px-32 py-14 text-gray-600 md:grid-cols-4">
+    <motion.div
+      {...lazyOnceLabels}
+      variants={fadeInUp}
+      className="grid grid-cols-2 gap-y-10 gap-x-10 bg-gray-100 px-32 py-14 text-gray-600 md:grid-cols-4"
+    >
       <div className="space-y-4 text-xs text-gray-800">
         <h5 className="font-bold">About</h5>
         <p>How Airbnb works</p>
@@ -33,7 +40,7 @@ function Footer() {
         <p>Contact Us</p>
         <p>Not affiliated with Airbnb</p>
       </div>
-    </div>
+    </motion.div>
   );
 }
 export default Footer;

@@ -1,10 +1,11 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { fadeInUp } from "../utils/framerAnimations";
+import { fadeInUp, lazyOnceLabels } from "../utils/framerAnimations";
 
 function LargeCard() {
   return (
     <motion.section
+      {...lazyOnceLabels}
       variants={fadeInUp}
       className="relative cursor-pointer py-16"
     >

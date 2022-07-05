@@ -15,9 +15,9 @@ import {
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { animLabels, fadeIn } from "../utils/framerAnimations";
+import { defaultLabels, fadeIn } from "../utils/framerAnimations";
 
-function Header({ placeholder }: { placeholder?: string }) {
+function Header({ placeholder }: { placeholder?: string | null }) {
   const [searchInput, setSearchInput] = useState("");
   const [startDate, setStartDate] = useState<Date | undefined>(new Date());
   const [endDate, setEndDate] = useState<Date | undefined>(new Date());
@@ -54,7 +54,7 @@ function Header({ placeholder }: { placeholder?: string }) {
   return (
     <header className="sticky top-0 z-50 grid grid-cols-3 bg-white p-5 shadow-md md:px-10">
       {/* Left */}
-      <Link href="/">
+      <Link href="/" scroll={false}>
         <div className="relative my-auto flex h-10 cursor-pointer items-center">
           <Image
             priority
@@ -76,7 +76,7 @@ function Header({ placeholder }: { placeholder?: string }) {
           placeholder={placeholder ?? "Where to?"}
           onChange={(e) => setSearchInput(e.target.value)}
         />
-        <SearchIcon className="hidden h-8 flex-shrink-0 cursor-pointer rounded-full bg-red-400 p-2 text-white md:mx-1 md:inline-flex" />
+        <SearchIcon className="hidden h-8 flex-shrink-0 rounded-full bg-red-400 p-2 text-white md:mx-1 md:inline-flex" />
       </div>
       {/* Right */}
       <div className="flex items-center justify-end space-x-4 text-gray-600">
@@ -90,7 +90,7 @@ function Header({ placeholder }: { placeholder?: string }) {
       <AnimatePresence>
         {searchInput && (
           <motion.div
-            {...animLabels}
+            {...defaultLabels}
             variants={fadeIn}
             className="col-span-3 mx-auto mt-5 flex flex-col"
           >

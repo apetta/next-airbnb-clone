@@ -1,7 +1,17 @@
-export const animLabels = {
+export const defaultLabels = {
   initial: "initial",
   animate: "animate",
   exit: "exit",
+};
+
+export const lazyOnceLabels = {
+  initial: "initial",
+  animate: false,
+  exit: "exit",
+  whileInView: "animate",
+  viewport: {
+    once: true,
+  },
 };
 
 export const fadeInUp = {
@@ -16,10 +26,6 @@ export const fadeInUp = {
       duration: 0.5,
       ease: "easeInOut",
     },
-  },
-  exit: {
-    y: 60,
-    opacity: 0,
   },
 };
 
@@ -62,29 +68,10 @@ export const fadeInLeft = {
   },
 };
 
-export const fadeInRight = {
-  initial: {
-    x: "100%",
-    opacity: 0,
-  },
-  animate: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: "easeInOut",
-    },
-  },
-  exit: {
-    x: "100%",
-    opacity: 0,
-  },
-};
-
 export const stagger = {
   animate: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.15,
     },
   },
 };
@@ -92,8 +79,5 @@ export const stagger = {
 export const pageTransition = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
-  exit: {
-    x: "-100%",
-    opacity: 0,
-  },
+  exit: { opacity: 0 },
 };

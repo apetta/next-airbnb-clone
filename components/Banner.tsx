@@ -3,13 +3,13 @@ import { useRouter } from "next/router";
 import heroImage from "../public/airbnb-hero.png";
 import icon from "../public/airbnb-icon.png";
 import { motion } from "framer-motion";
-import { fadeInUp } from "../utils/framerAnimations";
+import { fadeIn } from "../utils/framerAnimations";
 
 function Banner() {
   const router = useRouter();
   return (
     <motion.div
-      variants={fadeInUp}
+      variants={fadeIn}
       className="relative h-[300px] sm:h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px]"
     >
       <Image

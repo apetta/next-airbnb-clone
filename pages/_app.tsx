@@ -23,10 +23,13 @@ Router.events.on("routeChangeError", () => {
   progress.finish();
 });
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps, router }: AppProps) {
   return (
-    <AnimatePresence exitBeforeEnter>
-      <Component {...pageProps} />
+    <AnimatePresence
+      exitBeforeEnter
+      onExitComplete={() => window.scrollTo(0, 0)}
+    >
+      <Component key={router?.route} {...pageProps} />
     </AnimatePresence>
   );
 }
