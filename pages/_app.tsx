@@ -9,7 +9,7 @@ const progress = new ProgressBar({
   size: 2,
   color: "#DE595E",
   className: "z-50",
-  delay: 50,
+  delay: 20,
 });
 
 Router.events.on("routeChangeStart", () => {
@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       exitBeforeEnter
       onExitComplete={() => window.scrollTo(0, 0)}
     >
-      <div className="h-full min-w-[320px] overflow-x-scroll scrollbar-hide">
+      <div className="h-full min-w-[320px] scrollbar-hide">
         <Head>
           <title>Airbnb Clone</title>
           <link rel="icon" href="/airbnb-icon.png" />

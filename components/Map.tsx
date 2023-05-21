@@ -1,27 +1,59 @@
-import { getCenter } from "geolib";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Map as ReactMap, Marker, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { LocationMarkerIcon } from "@heroicons/react/solid";
+import randomCoordinates from "../utils/randomCoords";
+import { getCenter } from "geolib";
 
-function Map({ searchResults }: { searchResults: SearchResults[] }) {
+interface Coordinates {
+  latitude: number;
+  longitude: number;
+}
+
+function Map({
+  searchResults,
+  location,
+}: {
+  searchResults: SearchResults[];
+  location: string;
+}) {
   const [activeLocation, setActiveLocation] = useState<SearchResults | null>(
     null
   );
+  const [randomCoords, setRandomCoords] = useState<Coordinates[]>([]);
 
-  const coordinates = searchResults.map((result) => ({
-    latitude: result.lat,
-    longitude: result.long,
-  }));
+  useEffect(() => {
+    randomCoordinates(location).then(setRandomCoords);
+  }, [location]);
 
-  const center: { latitude: number; longitude: number } | false =
-    getCenter(coordinates);
+  console.log(randomCoords);
+
+  const center = useMemo(
+    () =>
+      randomCoords.length > 0
+        ? getCenter(randomCoords)
+        : { latitude: 0, longitude: 0 },
+    [randomCoords]
+  );
 
   const [viewport, setViewport] = useState({
     latitude: (center && center?.latitude) || 0,
     longitude: (center && center?.longitude) || 0,
     zoom: 11,
   });
+
+  // Update viewport when location changes
+  useEffect(() => {
+    setViewport({
+      latitude: (center && center?.latitude) || 0,
+      longitude: (center && center?.longitude) || 0,
+      zoom: 12,
+    });
+  }, [center]);
+
+  if (randomCoords.length === 0) return <div className="h-full w-full flex items-center justify-center">
+    <div className="text-xl font-semibold text-airbnb-pink">Loading...</div>
+  </div>;
 
   return (
     <ReactMap
@@ -33,7 +65,10 @@ function Map({ searchResults }: { searchResults: SearchResults[] }) {
     >
       {searchResults.map((result, index) => (
         <div key={result.star}>
-          <Marker longitude={result.long} latitude={result.lat}>
+          <Marker
+            longitude={randomCoords[index]?.longitude}
+            latitude={randomCoords[index]?.latitude}
+          >
             <LocationMarkerIcon
               aria-label="location pin"
               onClick={() => setActiveLocation(result)}
@@ -44,8 +79,8 @@ function Map({ searchResults }: { searchResults: SearchResults[] }) {
             <Popup
               closeOnClick={false}
               onClose={() => setActiveLocation(null)}
-              longitude={activeLocation.long}
-              latitude={activeLocation.lat}
+              longitude={randomCoords[index]?.longitude}
+              latitude={randomCoords[index]?.latitude}
               anchor="bottom"
             >
               {activeLocation.title}

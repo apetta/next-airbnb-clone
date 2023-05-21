@@ -91,9 +91,11 @@ function Search({ searchResults }: { searchResults: SearchResults[] }) {
 
         <motion.section
           variants={fadeIn}
-          className="sticky top-0 bottom-0 hidden h-screen xl:inline xl:min-w-[600px]"
+          className="sticky top-0 bottom-0 hidden h-screen xl:inline w-1/2"
         >
-          <Map searchResults={searchResults} />
+          <Map searchResults={searchResults} location={
+            location as string || "London"
+          } />
         </motion.section>
       </motion.main>
       <Footer />
