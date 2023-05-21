@@ -1,6 +1,4 @@
-import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import Banner from "../components/Banner";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -19,12 +17,7 @@ import {
 const Home = ({ exploreData, liveAnywhereData }: ApiRes) => {
   return (
     <motion.div {...defaultLabels} className="">
-      <Head>
-        <title>Airbnb Clone</title>
-        <link rel="icon" href="/airbnb-icon.png" />
-      </Head>
-
-      {/* Header */}
+    {/* Header */}
       <Header />
       {/* Banner */}
       <Banner />
@@ -83,13 +76,13 @@ const Home = ({ exploreData, liveAnywhereData }: ApiRes) => {
 export default Home;
 
 export async function getStaticProps() {
-  const exploreData = await fetch("https://jsonkeeper.com/b/4G1G").then((res) =>
-    res.json()
-  );
-
-  const liveAnywhereData = await fetch("https://jsonkeeper.com/b/VHHT").then(
+  const exploreData = await fetch("https://www.jsonkeeper.com/b/4G1G").then(
     (res) => res.json()
   );
+
+  const liveAnywhereData = await fetch(
+    "https://www.jsonkeeper.com/b/VHHT"
+  ).then((res) => res.json());
 
   return {
     props: {

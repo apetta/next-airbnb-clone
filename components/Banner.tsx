@@ -7,6 +7,12 @@ import { fadeIn } from "../utils/framerAnimations";
 
 function Banner() {
   const router = useRouter();
+  // Today's date & T+3 days
+  const today = new Date();
+  const threeDays = new Date();
+  threeDays.setDate(today.getDate() + 3);
+
+
   return (
     <motion.div
       variants={fadeIn}
@@ -15,29 +21,27 @@ function Banner() {
       <Image
         priority
         src={heroImage}
-        layout="fill"
-        objectFit="cover"
+        fill
+        className="object-cover w-full h-full"
         alt="hero"
       />
 
-      <div className="absolute top-1/3 left-1/2 min-w-fit -translate-y-1/4 -translate-x-1/2 rounded-lg bg-white p-5 px-10 text-center sm:top-1/3 lg:-translate-y-0 lg:px-20">
-        <Image
-          src={icon}
-          objectFit="contain"
-          height={40}
-          width={40}
-          alt="hero"
-        />
+      <div className="absolute top-1/3 left-1/2 min-w-fit -translate-y-1/4 -translate-x-1/2 rounded-lg bg-white p-5 px-10 text-center sm:top-1/3 lg:-translate-y-0 lg:px-20 items-center flex flex-col">
+        <Image src={icon} height={40} width={40} alt="hero" />
         <p className="text-md font-bold text-airbnb-pink sm:text-lg">
           Need Inspiration?
         </p>
         <button
           onClick={() =>
             router.push(
-              "/search?location=London&startDate=2042-01-01T00%3A00%3A00.000Z&endDate=2042-01-14T00%3A00%3A00.000Z&guestNumber=2"
+              `/search?location=London&startDate=${
+                today.toISOString().split("T")[0]
+              }&endDate=${
+                threeDays.toISOString().split("T")[0]
+              }&guestNumber=2`
             )
           }
-          className="my-3 rounded-full bg-airbnb-pink px-10 py-3 font-bold text-white shadow-md transition-transform duration-200 ease-in-out hover:shadow-xl active:scale-90"
+          className="my-3 whitespace-nowrap rounded-full bg-airbnb-pink px-10 py-3 text-sm sm:text-base font-bold text-white shadow-md transition-transform duration-200 ease-in-out hover:scale-105 active:scale-90"
         >
           Surprise Me
         </button>

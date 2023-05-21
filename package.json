@@ -13,10 +13,10 @@
     "framer-motion": "^6.3.16",
     "geolib": "^3.3.3",
     "mapbox-gl": "^2.9.1",
-    "next": "latest",
-    "react": "18.1.0",
+    "next": "~13.4.3",
+    "react": "~18.2.0",
     "react-date-range": "^1.4.0",
-    "react-dom": "18.1.0",
+    "react-dom": "~18.2.0",
     "react-map-gl": "^7.0.16",
     "sharp": "^0.30.7",
     "tailwind-scrollbar-hide": "^1.1.7"

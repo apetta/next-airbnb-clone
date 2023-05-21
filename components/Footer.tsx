@@ -6,7 +6,7 @@ function Footer() {
     <motion.div
       {...lazyOnceLabels}
       variants={fadeInUp}
-      className="grid grid-cols-2 gap-y-10 gap-x-10 bg-gray-100 px-32 py-14 text-gray-600 md:grid-cols-4"
+      className="grid grid-cols-2 gap-y-10 gap-x-10 bg-gray-100 px-12 md:px-32 py-14 text-gray-600 md:grid-cols-4"
     >
       <div className="space-y-4 text-xs text-gray-800">
         <h5 className="font-bold">About</h5>
@@ -22,7 +22,7 @@ function Footer() {
         <p>React</p>
         <p>Next.js</p>
         <p>Tailwind CSS</p>
-        <p>Papa React</p>
+        <p>TypeScript</p>
       </div>
       <div className="space-y-4 text-xs text-gray-800">
         <h5 className="font-bold">Host</h5>

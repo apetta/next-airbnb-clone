@@ -13,6 +13,7 @@ import {
   pageTransition,
   stagger,
 } from "../utils/framerAnimations";
+import Head from "next/head";
 
 function Search({ searchResults }: { searchResults: SearchResults[] }) {
   const router = useRouter();
@@ -25,11 +26,11 @@ function Search({ searchResults }: { searchResults: SearchResults[] }) {
   } = router.query;
 
   const formattedStartDate = format(
-    new Date(startDate as unknown as Date),
+    new Date(startDate as Date),
     "dd MMMM yy"
   );
   const formattedEndDate = format(
-    new Date(endDate as unknown as Date),
+    new Date(endDate as Date),
     "dd MMMM yy"
   );
 
@@ -37,6 +38,9 @@ function Search({ searchResults }: { searchResults: SearchResults[] }) {
 
   return (
     <motion.div {...defaultLabels}>
+       <Head>
+          <title>Airbnb Clone - Search</title>
+      </Head>
       <Header
         placeholder={
           location && dateRange && guestNumber
@@ -87,7 +91,7 @@ function Search({ searchResults }: { searchResults: SearchResults[] }) {
 
         <motion.section
           variants={fadeIn}
-          className="sticky top-0 hidden h-screen xl:inline xl:min-w-[600px]"
+          className="sticky top-0 bottom-0 hidden h-screen xl:inline xl:min-w-[600px]"
         >
           <Map searchResults={searchResults} />
         </motion.section>
@@ -99,7 +103,7 @@ function Search({ searchResults }: { searchResults: SearchResults[] }) {
 export default Search;
 
 export async function getServerSideProps() {
-  const searchResults = await fetch("https://jsonkeeper.com/b/5NPS").then(
+  const searchResults = await fetch("https://www.jsonkeeper.com/b/5NPS").then(
     (res) => res.json()
   );
   return {

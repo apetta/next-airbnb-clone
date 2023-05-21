@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import ProgressBar from "@badrap/bar-of-progress";
 import Router from "next/router";
 import { AnimatePresence } from "framer-motion";
+import Head from "next/head";
 
 const progress = new ProgressBar({
   size: 2,
@@ -29,7 +30,15 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       exitBeforeEnter
       onExitComplete={() => window.scrollTo(0, 0)}
     >
-      <Component key={router?.route} {...pageProps} />
+      <div className="h-full min-w-[320px] overflow-x-scroll scrollbar-hide">
+        <Head>
+          <title>Airbnb Clone</title>
+          <link rel="icon" href="/airbnb-icon.png" />
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+        </Head>
+        <Component key={router?.route} {...pageProps} />
+      </div>
     </AnimatePresence>
   );
 }

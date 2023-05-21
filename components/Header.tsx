@@ -1,5 +1,6 @@
 import Image from "next/image";
 import logo from "../public/airbnb-logo.png";
+import icon from "../public/airbnb-icon.png";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker, RangeKeyDict } from "react-date-range";
@@ -52,23 +53,29 @@ function Header({ placeholder }: { placeholder?: string | null }) {
   };
 
   return (
-    <header className="sticky top-0 z-50 grid grid-cols-3 bg-white p-5 shadow-md md:px-10">
+    <header className="sticky top-0 z-50 grid grid-cols-6 bg-white p-5 shadow-md md:grid-cols-3 md:px-10 items-center">
       {/* Left */}
-      <Link href="/" scroll={false}>
-        <div className="relative my-auto flex h-10 cursor-pointer items-center">
+      <Link href="/" scroll={false} className="h-fit w-fit">
+        <div className="relative col-span-1 my-auto flex h-10 cursor-pointer items-center">
           <Image
             priority
             src={logo}
-            layout="fill"
-            objectFit="contain"
+            height={40}
             alt="logo"
-            objectPosition="left"
+            className="hidden md:inline-block"
+          />
+          <Image
+            priority
+            src={icon}
+            height={40}
+            alt="logo"
+            className="md:hidden"
           />
         </div>
       </Link>
 
       {/* Middle */}
-      <div className="flex items-center rounded-full border-2 p-2">
+      <div className="col-span-3 sm:col-span-4 flex items-center rounded-full border-2 p-2 md:col-span-1">
         <input
           value={searchInput}
           type="text"
@@ -79,9 +86,9 @@ function Header({ placeholder }: { placeholder?: string | null }) {
         <SearchIcon className="hidden h-8 flex-shrink-0 rounded-full bg-red-400 p-2 text-white md:mx-1 md:inline-flex" />
       </div>
       {/* Right */}
-      <div className="flex items-center justify-end space-x-4 text-gray-600">
-        <p className="hidden lg:inline">Become a Host</p>
-        <GlobeAltIcon className="h-6 cursor-pointer" />
+      <div className="col-span-2 sm:col-span-1 flex items-center justify-end space-x-4 text-gray-600 md:col-span-1">
+        <p className="hidden lg:inline select-none">Become a Host</p>
+        <GlobeAltIcon className="h-6 cursor-pointer hidden md:inline-block" />
         <div className="flex cursor-pointer items-center space-x-2 rounded-full border-2 p-1 px-2">
           <MenuIcon className="h-5" />
           <UserCircleIcon className="h-8" />
@@ -92,13 +99,14 @@ function Header({ placeholder }: { placeholder?: string | null }) {
           <motion.div
             {...defaultLabels}
             variants={fadeIn}
-            className="col-span-3 mx-auto mt-5 flex flex-col"
+            className="col-span-6 mx-auto mt-5 flex flex-col md:col-span-3"
           >
             <DateRangePicker
               ranges={[selectionRange]}
               minDate={startDate}
               rangeColors={["#FD5B61"]}
               onChange={handleSelect}
+              className=""
             />
             <div className="mb-4 mt-2 flex items-center border-b">
               <h2 className="flex-grow text-2xl font-semibold">
