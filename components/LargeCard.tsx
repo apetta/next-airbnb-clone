@@ -12,9 +12,8 @@ function LargeCard() {
       <div className="relative h-96">
         <Image
           src="https://links.papareact.com/4cj"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-2xl"
+          fill
+          className="rounded-2xl object-cover"
           alt="get inspired"
         />
       </div>
