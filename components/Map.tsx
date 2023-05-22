@@ -26,8 +26,6 @@ function Map({
     randomCoordinates(location).then(setRandomCoords);
   }, [location]);
 
-  console.log(randomCoords);
-
   const center = useMemo(
     () =>
       randomCoords.length > 0
@@ -51,9 +49,12 @@ function Map({
     });
   }, [center]);
 
-  if (randomCoords.length === 0) return <div className="h-full w-full flex items-center justify-center">
-    <div className="text-xl font-semibold text-airbnb-pink">Loading...</div>
-  </div>;
+  if (randomCoords.length === 0)
+    return (
+      <div className="flex h-full w-full items-center justify-center">
+        <div className="text-xl font-semibold text-airbnb-pink">Loading...</div>
+      </div>
+    );
 
   return (
     <ReactMap

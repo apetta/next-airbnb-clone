@@ -26,7 +26,7 @@ function Banner() {
         alt="hero"
       />
 
-      <div className="absolute top-1/3 left-1/2 min-w-fit -translate-y-1/4 -translate-x-1/2 rounded-lg bg-white p-5 px-10 text-center sm:top-1/3 lg:-translate-y-0 lg:px-20 items-center flex flex-col">
+      <div className="absolute top-1/3 left-1/2 min-w-fit -translate-y-1/4 -translate-x-1/2 rounded-xl bg-white p-5 px-10 text-center sm:top-1/3 lg:-translate-y-0 lg:px-20 items-center flex flex-col">
         <Image src={icon} height={40} width={40} alt="hero" />
         <p className="text-md font-bold text-airbnb-pink sm:text-lg">
           Need Inspiration?

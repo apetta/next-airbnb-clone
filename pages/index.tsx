@@ -15,6 +15,7 @@ import {
 } from "../utils/framerAnimations";
 
 const Home = ({ exploreData, liveAnywhereData }: ApiRes) => {
+  
   return (
     <motion.div {...defaultLabels} className="">
     {/* Header */}

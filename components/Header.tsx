@@ -55,7 +55,7 @@ function Header({ placeholder }: { placeholder?: string | null }) {
   return (
     <header className="sticky top-0 z-50 grid grid-cols-6 bg-white p-5 shadow-md md:grid-cols-3 md:px-10 items-center">
       {/* Left */}
-      <Link href="/" scroll={false} className="h-fit w-fit">
+      <Link href="/" className="h-fit w-fit">
         <div className="relative col-span-1 my-auto flex h-10 cursor-pointer items-center">
           <Image
             priority
