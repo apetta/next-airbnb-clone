@@ -44,7 +44,7 @@ function Search({ searchResults }: { searchResults: SearchResults[] }) {
       <Header
         placeholder={
           location && dateRange && guestNumber
-            ? `${location} | ${dateRange} | ${guestNumber} ${
+            ? `${(location as string).charAt(0).toUpperCase() + (location as string).slice(1)} | ${dateRange} | ${guestNumber} ${
                 guestNumber && guestNumber > "1" ? "Guests" : "Guest"
               }`
             : null
@@ -104,7 +104,7 @@ function Search({ searchResults }: { searchResults: SearchResults[] }) {
 }
 export default Search;
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const searchResults = await fetch("https://www.jsonkeeper.com/b/W5S5").then(
     (res) => res.json()
   );

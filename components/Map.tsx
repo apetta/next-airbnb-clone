@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Map as ReactMap, Marker, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { LocationMarkerIcon } from "@heroicons/react/solid";
@@ -23,7 +23,12 @@ function Map({
   const [randomCoords, setRandomCoords] = useState<Coordinates[]>([]);
 
   useEffect(() => {
-    randomCoordinates(location).then(setRandomCoords);
+    const fetchRandomCoords = async () => {
+      const coords = await randomCoordinates(location);
+      setRandomCoords(coords);
+    };
+
+    fetchRandomCoords();
   }, [location]);
 
   const center = useMemo(
@@ -49,6 +54,14 @@ function Map({
     });
   }, [center]);
 
+  const handleMarkerClick = useCallback((result: React.SetStateAction<SearchResults | null>) => {
+    setActiveLocation(result);
+  }, []);
+
+  const handleMove = useCallback((evt: { viewState: React.SetStateAction<{ latitude: number; longitude: number; zoom: number; }>; }) => {
+    setViewport(evt.viewState);
+  }, []);
+
   if (randomCoords.length === 0)
     return (
       <div className="flex h-full w-full items-center justify-center">
@@ -62,7 +75,7 @@ function Map({
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
       style={{ width: "100%", height: "100%" }}
       {...viewport}
-      onMove={(evt) => setViewport(evt.viewState)}
+      onMove={handleMove}
     >
       {searchResults.map((result, index) => (
         <div key={result.star}>
@@ -72,7 +85,7 @@ function Map({
           >
             <LocationMarkerIcon
               aria-label="location pin"
-              onClick={() => setActiveLocation(result)}
+              onClick={() => handleMarkerClick(result)}
               className="h-7 w-7 animate-bounce-slow cursor-pointer text-black"
             />
           </Marker>
@@ -92,4 +105,5 @@ function Map({
     </ReactMap>
   );
 }
-export default Map;
+
+export default React.memo(Map);

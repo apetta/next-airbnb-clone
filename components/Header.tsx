@@ -50,6 +50,8 @@ function Header({ placeholder }: { placeholder?: string | null }) {
         guestNumber,
       },
     });
+
+    setSearchInput("");
   };
 
   return (

@@ -23,7 +23,6 @@ export default async function randomCoordinates(
   const results: Coordinates[] = [];
 
   for (let i = 0; i < 7; i++) {
-    // await new Promise(resolve => setTimeout(resolve, 500)); // Adding a 500ms delay to avoid hitting the API rate limit
     const randLat = cityLat + (Math.random() - 0.5) * (2 / 69);
     const randLng =
       cityLng +
