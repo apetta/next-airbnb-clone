@@ -1,23 +1,22 @@
-# Next.js + Tailwind CSS Example
+# Airbnb Clone
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+This project is a basic clone of the Airbnb website UI built using Next.js, React.js, and various other modern technologies.
 
-## Deploy your own
+## Technologies Used
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+The primary technologies used in this project are:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+- **Next.js**: A modern framework for building server-side rendered React applications.
+- **React.js**: A JavaScript library for building user interfaces.
+- **Tailwind CSS**: A utility-first CSS framework for rapidly building custom user interfaces.
+- **Framer Motion**: A production-ready motion library for React. Utilize this for most of the animations.
+- **date-fns**: Modern JavaScript date utility library for manipulating dates.
+- **axios**: Promise based HTTP client for the browser and node.js.
+- **Mapbox**: An open-source mapping platform for custom designed maps. Used in the project for property location display.
 
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-# or
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+Other technologies include:
+- **@badrap/bar-of-progress**: Lightweight progress bar for page load indication.
+- **@heroicons/react**: A set of high-quality SVG icons for UI development.
+- **geolib**: Used to calculate distances, areas, and more with geographic coordinates.
+- **react-date-range**: A React component for choosing dates and date ranges. 
+- **sharp**: High performance Node.js image processing module.
