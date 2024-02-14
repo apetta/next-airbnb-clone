@@ -105,7 +105,7 @@ function Search({ searchResults }: { searchResults: SearchResults[] }) {
 export default Search;
 
 export async function getStaticProps() {
-  const searchResults = await fetch("https://www.jsonkeeper.com/b/W5S5").then(
+  const searchResults = await fetch("https://www.jsonkeeper.com/b/U90W").then(
     (res) => res.json()
   );
   return {
